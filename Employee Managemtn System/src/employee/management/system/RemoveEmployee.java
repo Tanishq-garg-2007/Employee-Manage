@@ -12,7 +12,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
     Choice choiceEMPID;
     JButton delete, back;
 
-    // --- Modern UI Colors & Fonts ---
+    
     private final Color COLOR_DARK_BG = new Color(30, 41, 59);
     private final Color COLOR_CARD_BG = new Color(42, 59, 80);
     private final Color COLOR_ACCENT = new Color(94, 234, 212);
@@ -21,7 +21,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
     private final Font FONT_DATA = new Font("Inter", Font.PLAIN, 15);
     private final Font FONT_BUTTON = new Font("Poppins", Font.BOLD, 16);
 
-    // Helper method to create a modern button
+    
     private JButton createModernButton(String text, Color background, Color foreground) {
         JButton button = new JButton(text);
         button.setForeground(foreground);
@@ -37,7 +37,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
         setTitle("Remove Employee");
         getContentPane().setBackground(COLOR_DARK_BG);
 
-        // --- Employee ID Selector ---
+        
         JLabel label = new JLabel("Employee ID");
         label.setBounds(50,50,150,30);
         label.setFont(FONT_LABEL);
@@ -51,7 +51,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
         choiceEMPID.setFont(FONT_DATA);
         add(choiceEMPID);
 
-        // Populate Choice box
+        
         try{
             conn c = new conn();
             ResultSet resultSet = c.statement.executeQuery("select * from employee");
@@ -62,7 +62,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
             e.printStackTrace();
         }
 
-        // --- Employee Details Display ---
+        
         JLabel labelName = new JLabel("Name");
         labelName.setBounds(50,100,150,30);
         labelName.setFont(FONT_LABEL);
@@ -99,7 +99,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
         textEmail.setForeground(COLOR_ACCENT);
         add(textEmail);
 
-        // Fetch initial data based on selected ID
+        
         try {
             conn c = new conn();
             ResultSet resultSet = c.statement.executeQuery("select * from employee where empId = '"+choiceEMPID.getSelectedItem()+"'");
@@ -112,7 +112,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
             e.printStackTrace();
         }
 
-        // Add ItemListener to update fields
+        
         choiceEMPID.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -130,7 +130,7 @@ public class RemoveEmployee extends JFrame implements ActionListener {
             }
         });
 
-        // --- Buttons ---
+        
         delete = createModernButton("DELETE", Color.RED.darker(), COLOR_TEXT);
         delete.setBounds(80,300,150,40);
         delete.addActionListener(this);
@@ -141,9 +141,9 @@ public class RemoveEmployee extends JFrame implements ActionListener {
         back.addActionListener(this);
         add(back);
 
-        // Removed all image logic for clean minimalism
+        
 
-        setSize(550,450); // Adjusted size to fit the minimal content
+        setSize(550,450); 
         setLocationRelativeTo(null);
         setLayout(null);
         setVisible(true);
@@ -173,4 +173,5 @@ public class RemoveEmployee extends JFrame implements ActionListener {
     public static void main(String[] args) {
         new RemoveEmployee();
     }
+
 }

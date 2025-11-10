@@ -12,27 +12,26 @@ public class Login extends JFrame implements ActionListener {
     JPasswordField tpassword;
     JButton login, back;
 
-    // --- Modern UI Colors & Fonts ---
-    private final Color COLOR_DARK_BG = new Color(30, 41, 59); // Deep Navy/Slate
-    private final Color COLOR_CARD_BG = new Color(42, 59, 80, 200); // Translucent Card
-    private final Color COLOR_ACCENT = new Color(94, 234, 212); // Vibrant Cyan/Mint
+    private final Color COLOR_DARK_BG = new Color(30, 41, 59); 
+    private final Color COLOR_CARD_BG = new Color(42, 59, 80, 200); 
+    private final Color COLOR_ACCENT = new Color(94, 234, 212); 
     private final Font FONT_LABEL = new Font("Inter", Font.PLAIN, 16);
     private final Font FONT_BUTTON = new Font("Poppins", Font.BOLD, 14);
 
     Login(){
         setTitle("Employee Management System - Login");
-        getContentPane().setBackground(COLOR_DARK_BG); // Main BG
+        getContentPane().setBackground(COLOR_DARK_BG); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // Use a central JPanel for the "Glassmorphic" Card Effect
+        
         JPanel cardPanel = new JPanel();
         cardPanel.setLayout(null);
         cardPanel.setBackground(COLOR_CARD_BG);
-        cardPanel.setBounds(100, 30, 400, 240); // Centered Card
+        cardPanel.setBounds(100, 30, 400, 240); 
         cardPanel.setBorder(BorderFactory.createLineBorder(COLOR_ACCENT, 1));
         add(cardPanel);
 
-        // 1. Username Label and Field
+        
         JLabel username = new JLabel("USERNAME");
         username.setBounds(40,40,100,30);
         username.setForeground(Color.WHITE);
@@ -47,7 +46,6 @@ public class Login extends JFrame implements ActionListener {
         tusername.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         cardPanel.add(tusername);
 
-        // 2. Password Label and Field
         JLabel password = new JLabel("PASSWORD");
         password.setBounds(40,90,100,30);
         password.setForeground(Color.WHITE);
@@ -62,7 +60,7 @@ public class Login extends JFrame implements ActionListener {
         tpassword.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         cardPanel.add(tpassword);
 
-        // 3. Login Button (Primary Action)
+        
         login = new JButton("LOGIN");
         login.setBounds(200,160,150,40);
         login.setBackground(COLOR_ACCENT);
@@ -73,7 +71,7 @@ public class Login extends JFrame implements ActionListener {
         login.addActionListener(this);
         cardPanel.add(login);
 
-        // 4. Back Button (Secondary/Ghost Action)
+        
         back = new JButton("BACK");
         back.setBounds(40,160,150,40);
         back.setBackground(COLOR_CARD_BG.darker());
@@ -84,10 +82,9 @@ public class Login extends JFrame implements ActionListener {
         back.addActionListener(this);
         cardPanel.add(back);
 
-        // Removed all image logic for a clean, minimal design
-
-        setSize(600,350); // Increased height slightly for better spacing
-        setLocationRelativeTo(null); // Center the window
+        
+        setSize(600,350); 
+        setLocationRelativeTo(null); 
         setLayout(null);
         setVisible(true);
     }
@@ -96,9 +93,9 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login){
             try {
-                // Existing login logic remains...
+                
                 String username = tusername.getText();
-                // Note: getPassword() is preferred for security, but getText() is used to maintain original logic
+                
                 String password = new String(tpassword.getPassword());
 
                 conn conn = new conn();
@@ -116,11 +113,12 @@ public class Login extends JFrame implements ActionListener {
             }
 
         } else if (e.getSource() == back) {
-            System.exit(0); // Standard exit code
+            System.exit(0); 
         }
     }
 
     public static void main(String[] args) {
         new Login();
     }
+
 }
